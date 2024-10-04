@@ -109,12 +109,65 @@ fun main(){
             }
             11->{
                 /*Ejercicio 11. Crea una función que determine si dos números son primos relativos*/
-
-
-
-
-
+                println("Escribe el primer número:")
+                val teclado9 = readLine()
+                var n1 = teclado9!!.toInt()
+                println("Escribe el segundo número:")
+                val teclado10 = readLine()
+                var n2 = teclado10!!.toInt()
+                if(primosRelativos(n1,n2)){
+                    println("Los números $n1 y $n2 son primos relativos")
+                }
+                else{
+                    println("Los números $n1 y $n2 no son primos relativos")
+                }
+                break
             }
+            12-> {
+                /*Ejercicio 12. Crea una función que determine si un número dado es capicúa*/
+                println("Escribe un número:")
+                val teclado11 = readLine()
+                var num = teclado11!!.toInt()
+                if (esCapicua(num)) {
+                    println("El número $num es capicúa")
+                } else {
+                    println("El número $num no es capicúa")
+                }
+            }
+            13->{
+                /*Ejercicio 13. Crea una función que dada una cadena de texto con formato Emmet
+                devuelva su correspondiente etiqueta HTML, teniendo en cuenta sólo los atributos
+                de clase e id.*/
+                println("Escribe una cadena de texto con formato Emmet:")
+                val teclado12 = readLine()
+                var cadena = teclado12!!
+            }
+            14->{
+                /*Ejercicio 14. Crea una función que dado un número n imprima el siguiente ‘mosaico’
+                (para n = 6):
+                1
+                22
+                333
+                4444
+                55555
+                666666*/
+                println("Escribe un número:")
+                val teclado13 = readLine()
+                var num = teclado13!!.toInt()
+                mosaico(num)
+                break
+            }
+            15->{
+                /*Ejercicio 15. Crear una función que reciba dos arrays de enteros y devuelva un array de booleanos
+                que determine si los elementos, uno a uno, de ambos arrays son iguales*/
+                var lista1=listOf(1,2,9,4,5,6,7,8,9,10)
+                var lista2=listOf(1,2,3,4,5,6,7,8,9,10)
+                println("La lista 1 es: ${lista1}")
+                println("La lista 2 es: ${lista2}")
+                println("Resultado: ${arraysIguales(lista1,lista2)}")
+                break
+            }
+
 
 
             //cosas
@@ -226,5 +279,44 @@ fun fibonacci(num:Int):String{
     }
     return imprime.dropLast(1)
 }
-
-
+//EJ11
+fun primosRelativos(n1:Int,n2:Int):Boolean{
+    var primo=true
+    for(i in 2..n1){
+        if(n1%i==0 && n2%i==0){
+            primo=false
+        }
+    }
+    return primo
+}
+//EJ12
+fun esCapicua(num:Int):Boolean {
+    var capicua = true
+    var trampa = num.toString()
+    var supertrampa = trampa.reversed()
+    if (trampa != supertrampa) {
+        capicua = false
+    }
+    return capicua
+}
+//EJ13
+fun emmetToHtml(cadena:String){
+    //faltaaaaaaaa
+}
+//EJ14
+fun mosaico(num:Int){
+    for(i in 1..num){
+        for(j in 1..i){
+            print("$i")
+        }
+        print("\n")
+    }
+}
+//EJ15
+fun arraysIguales(lista1:List<Int>,lista2:List<Int>):List<Boolean>{
+    var listaBool=mutableListOf<Boolean>()
+    for(i in 0..lista1.size-1){
+        listaBool+=lista1[i]==lista2[i]
+    }
+    return listaBool
+}
