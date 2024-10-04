@@ -159,7 +159,7 @@ fun main(){
             }
             15->{
                 /*Ejercicio 15. Crear una función que reciba dos arrays de enteros y devuelva un array de booleanos
-                que determine si los elementos, uno a uno, de ambos arrays son iguales*/
+                que determine si los elementos, uno a uno, de ambos arrays son iguales */
                 var lista1=listOf(1,2,9,4,5,6,7,8,9,10)
                 var lista2=listOf(1,2,3,4,5,6,7,8,9,10)
                 println("La lista 1 es: ${lista1}")
