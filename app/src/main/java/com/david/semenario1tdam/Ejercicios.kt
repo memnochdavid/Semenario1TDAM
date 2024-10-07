@@ -1,16 +1,19 @@
 package com.david.semenario1tdam
 
+import java.sql.SQLOutput
+
 
 fun main(){
+    println("SEMEN_ARIO 1 - TADAM")
     println("Escribe el ejercicio que quieres corregir (-1 para terminar):")
     val input = readLine()
     var ejercicio = input!!.toInt()
-    val lista=listOf(1,5,3,4,55,6,7,8,999999,10)//La vamos a reutilizar en los ejercicios
     while(ejercicio!=-1){
         when(ejercicio){
             1->{
                 /*Ejercicio 1. Crea una función que obtenga el número máximo de una
                 lista de números*/
+                val lista=listOf(1,5,3,4,55,6,7,8,999999,10)
                 println("La lista es: ${lista}")
                 println("El numero maximo de la lista es: ${maxNumFromList(lista)}")
                 break
@@ -18,6 +21,7 @@ fun main(){
             2->{
                 /*Ejercicio 2. Crea una función que obtenga la sumatoria de
                 todos los números de una lista de números*/
+                val lista=listOf(1,5,3,4,55,6,7,8,999999,10)
                 println("La lista es: ${lista}")
                 println(sumatoria(lista))
                 break
@@ -141,6 +145,9 @@ fun main(){
                 println("Escribe una cadena de texto con formato Emmet:")
                 val teclado12 = readLine()
                 var cadena = teclado12!!
+                println(emmetToHtml(cadena))
+
+
             }
             14->{
                 /*Ejercicio 14. Crea una función que dado un número n imprima el siguiente ‘mosaico’
@@ -167,8 +174,47 @@ fun main(){
                 println("Resultado: ${arraysIguales(lista1,lista2)}")
                 break
             }
-
-
+            16->{
+                /*Ejercicio 16: Crea una función que calcule el producto de todos los elementos en
+                una lista de números.*/
+                var listaNums=listOf(3,55,6,8,2,1,77)
+                println("La lista es: ${listaNums}")
+                println(productoNumsLista(listaNums))
+                break
+            }
+            17->{
+                /*Ejercicio 17: Crea una función que dada una lista de números, devuelva una nueva
+                lista con solo los números pares.*/
+                var listaNums=listOf(3,55,6,8,2,1,77)//la del ej anterior
+                println("La lista es: ${listaNums}")
+                println(numsPares(listaNums))
+                break
+            }
+            18->{
+                /*Ejercicio 18: Crea una función que determine si un número es primo.*/
+                println("Escribe un número:")
+                val teclado18 = readLine()
+                var num = teclado18!!.toInt()
+                if(esPrimo(num)) println("El número $num es primo.")
+                else println("El número $num no es primo.")
+                break
+            }
+            19->{
+                /*Ejercicio 19: Crea una función que, dada una cadena de texto, elimine todas las
+                vocales de la cadena.*/
+                var cadena="Un zorro atrapado es mas peligroso que un chacal."
+                println("Texto original: $cadena")
+                println("Sin vocales: "+borraVocales(cadena))
+                break
+            }
+            20->{
+                /*Ejercicio 20: Crea una función que calcule el factorial de un número.*/
+                println("Escribe un número:")
+                val teclado20 = readLine()
+                var num = teclado20!!.toInt()
+                println("El número es: $num")
+                println(factorialN(num))
+            }
 
             //cosas
             -1->{
@@ -202,7 +248,7 @@ fun sumatoria(lista:List<Int>):String{
         imprime+="${valor}+"
         suma+=valor
     }
-    imprime.dropLast(1)
+    imprime=imprime.dropLast(1)
     imprime+=" = ${suma}"
     return imprime.toString()
 }
@@ -300,8 +346,21 @@ fun esCapicua(num:Int):Boolean {
     return capicua
 }
 //EJ13
-fun emmetToHtml(cadena:String){
-    //faltaaaaaaaa
+fun emmetToHtml(cadena:String):String{
+    var trozos=cadena.split(".","#")
+    var xml=""
+    when(trozos.size){
+        1->{
+            xml="<${trozos[0]}></${trozos[0]}>"
+        }
+        2->{
+            xml="<${trozos[0]} class=\"${trozos[1]}\"></${trozos[0]}>"
+        }
+        3->{
+            xml="<${trozos[0]} class=\"${trozos[1]} id=\"${trozos[2]}\"></${trozos[0]}>"
+        }
+    }
+    return xml
 }
 //EJ14
 fun mosaico(num:Int){
@@ -319,4 +378,51 @@ fun arraysIguales(lista1:List<Int>,lista2:List<Int>):List<Boolean>{
         listaBool+=lista1[i]==lista2[i]
     }
     return listaBool
+}
+//EJ16
+fun productoNumsLista(nums:List<Int>):String{
+    var productos="Producto de los elementos: "
+    var cal_culo=0
+    for(i in 0..nums.size-1){
+        if(i==0) cal_culo=nums[0]
+        else cal_culo*=nums[i]
+        productos+="${nums[i]} + "
+    }
+    productos=productos.dropLast(2)
+    productos+="= "+cal_culo.toString()
+    return productos
+}
+//EJ17
+fun numsPares(nums:List<Int>):String{
+    var pares="Los valores pares de la lista son: "
+        pares+="${nums.filter{it%2==0}}"
+    return pares
+}
+//EJ18
+fun esPrimo(n:Int):Boolean{
+    var loEs=true
+    for(i in 2..n-1){
+        if(n%i==0){
+            loEs=false
+        }
+    }
+    return loEs
+}
+//EJ19
+fun borraVocales(cadena:String):String{
+    var devuelve=""
+    devuelve+=cadena.lowercase().filter{(it!='a' && it!='e'&& it!='i'&& it!='o'&& it!='u')}
+    return devuelve
+}
+//EJ20
+fun factorialN(n:Int):String{
+    var devuelve="Factorial de n= "
+    var resultado=1
+    for(i in 1..n){
+        resultado*=i
+        devuelve+=(i.toString()+" * ")
+    }
+    devuelve=devuelve.dropLast(2)
+    devuelve+=" = "+resultado
+    return devuelve
 }
