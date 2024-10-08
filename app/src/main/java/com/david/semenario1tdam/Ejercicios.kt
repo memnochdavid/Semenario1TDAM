@@ -473,6 +473,8 @@ fun esPerfecto(n:Int):Boolean{
 }
 //EJ23
 fun wonderfulWorld(n:Int):Boolean{
+    var amstrong=true
+    var cifras=numCifras(n)
 
 }
 fun numCifras(n:Int):Int{
@@ -484,3 +486,6 @@ fun numCifras(n:Int):Int{
     }
     return cont
 }
+/*Ejercicio 23: Crea una función que, dado un número entero, devuelva True si es un número Armstrong (un
+número que es igual a la suma de sus propios dígitos elevados a una potencia). Por ejemplo, 153 es un
+número Armstrong porque 1^3 + 5^3 + 3^3 = 153.*/
