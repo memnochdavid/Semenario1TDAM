@@ -215,6 +215,30 @@ fun main(){
                 println("El número es: $num")
                 println(factorialN(num))
             }
+            21->{
+                /*Ejercicio 21: Crea una función que invierta una cadena de texto. Por ejemplo, "hola" debería convertirse en
+                "aloh".*/
+                var cadena="Tengo un sueño: que un día esta nación se pondrá en pie y realizará el verdadero significado de su credo: Sostenemos que estas verdades son evidentes por sí mismas: que todos los hombres han sido creados iguales"
+                println("Texto original:\n"+cadena)
+                println(reves(cadena))
+                break
+            }
+            22->{
+                /*Ejercicio 22: Crea una función que, dado un número, devuelva True si es un número perfecto (la suma de
+                sus divisores propios positivos es igual al número), o False en caso contrario.*/
+                println("Escribe un número:")
+                val teclado22 = readLine()
+                var num = teclado22!!.toInt()
+                if(esPerfecto(num)) println("El número $num es perfecto.")
+                else println("El número $num no es perfecto.")
+                break
+            }
+            23->{
+                /*Ejercicio 23: Crea una función que, dado un número entero, devuelva True si es un número Armstrong (un
+                número que es igual a la suma de sus propios dígitos elevados a una potencia). Por ejemplo, 153 es un
+                número Armstrong porque 1^3 + 5^3 + 3^3 = 153.*/
+
+            }
 
             //cosas
             -1->{
@@ -425,4 +449,38 @@ fun factorialN(n:Int):String{
     devuelve=devuelve.dropLast(2)
     devuelve+=" = "+resultado
     return devuelve
+}
+//EJ21
+fun reves(texto:String):String{
+    var otxet="Texto al reves:\n"
+    var i=texto.length-1
+    while(i>0){
+        otxet+=texto.get(i)
+        i--
+    }
+    return otxet
+}
+//EJ22
+fun esPerfecto(n:Int):Boolean{
+    var suma=0
+    for(i in 1..n/2){
+        if(n%i==0){
+            suma+=i
+        }
+    }
+    if(n==suma) return true
+    else return false
+}
+//EJ23
+fun wonderfulWorld(n:Int):Boolean{
+
+}
+fun numCifras(n:Int):Int{
+    var num=n
+    var cont=0
+    while(num>0){
+        num=num%10
+        cont++
+    }
+    return cont
 }
