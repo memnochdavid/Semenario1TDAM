@@ -1,7 +1,6 @@
 package com.david.semenario1tdam
 
-import java.sql.SQLOutput
-
+import kotlin.math.pow
 
 fun main(){
     println("SEMEN_ARIO 1 - TADAM")
@@ -237,9 +236,26 @@ fun main(){
                 /*Ejercicio 23: Crea una función que, dado un número entero, devuelva True si es un número Armstrong (un
                 número que es igual a la suma de sus propios dígitos elevados a una potencia). Por ejemplo, 153 es un
                 número Armstrong porque 1^3 + 5^3 + 3^3 = 153.*/
+                println("Escribe un número: ")
+                val teclado23 = readLine()
+                var num = teclado23!!.toInt()
+                if(wonderfulWorld(num)) println("El número $num es un numero Amstrong.")
+                else println("El número $num no es un numero Amstrong.")
+                break
+            }
+            24->{
+                /*Ejercicio 24: Crea una función que encuentre el número más grande en una matriz bidimensional
+                (una lista de listas).*/
+                val matrix=arrayOf(intArrayOf(1,2,3,4,9999),intArrayOf(5,6,7,8,9),intArrayOf(10,11,12,13,14),intArrayOf(15,16,17,18,19))
+                var mayor=buscaMayor(matrix)
+                println("Mayor: $mayor")
+                break
+            }
+            25->{
+                /*Ejercicio 25: Crea una función que encuentre el número más pequeño en una matriz
+                bidimensional (una lista de listas).*/
 
             }
-
             //cosas
             -1->{
                 println("Fin del programa")
@@ -473,7 +489,27 @@ fun esPerfecto(n:Int):Boolean{
 }
 //EJ23
 fun wonderfulWorld(n:Int):Boolean{
-    var amstrong=true
-    var cifras=n.toString().length
-
+    var num=n
+    var cifra=0
+    var nCif=n.toString().length
+    var suma:Double=0.0
+    while(num>0){
+        cifra=num%10
+        num=num/10
+        suma+=cifra.toDouble().pow(nCif)
+    }
+    if(suma==n.toDouble())return true
+    else return false
 }
+//EJ24
+fun buscaMayor(m:Array<IntArray>):Int{
+    var mayor=m[0][0]
+    for(i in 0..m.size-1){
+        for(j in 0..m[i].size-1){
+            if(mayor<m[i][j])
+                mayor=m[i][j]
+        }
+    }
+    return mayor
+}
+//EJ25
