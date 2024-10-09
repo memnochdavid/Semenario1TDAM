@@ -1,5 +1,6 @@
 package com.david.semenario1tdam
 
+import androidx.recyclerview.widget.SortedList
 import kotlin.math.pow
 
 fun main(){
@@ -254,7 +255,49 @@ fun main(){
             25->{
                 /*Ejercicio 25: Crea una función que encuentre el número más pequeño en una matriz
                 bidimensional (una lista de listas).*/
-
+                val matrix=arrayOf(intArrayOf(1,2,3,4,9999),intArrayOf(5,6,7,8,9),intArrayOf(10,11,-12,13,14),intArrayOf(15,16,17,18,19))
+                var menor=buscaMenor(matrix)
+                println("Menor: $menor")
+                break
+            }
+            26->{
+                /*Ejercicio 26: Crea una función que, dada una lista de palabras, devuelva la
+                palabra más larga.*/
+                val palabras=listOf("pene", "supercalifragilisticoespialidoso", "libreta", "pantalla", "escritorio", "proyector")
+                println("Lista de palabras:\n$palabras")
+                var larga=masLarga(palabras)
+                println("La mas larga es $larga")
+                break
+            }
+            27->{
+                /*Ejercicio 27: Crea una función que, dada una lista de palabras, devuelva la
+                palabra más corta.*/
+                val palabras=listOf("pene", "supercalifragilisticoespialidoso", "libreta", "pantalla", "escritorio", "proyector")
+                println("Lista de palabras:\n$palabras")
+                var corta=masCorta(palabras)
+                println("La mas corta es $corta, (probablemente asiatico)")
+                break
+            }
+            28->{
+                /*Ejercicio 28: Crea una función que determine si una cadena de texto contiene solo
+                caracteres alfabéticos (letras) y espacios en blanco.*/
+                val texto="caca is poo"
+                println("El texto es:\n$texto")
+                if(soloLetrasEspacios(texto)) println("El texto solo contiene letras y espacios.")
+                else println("El texto contiene numeros.")
+                break
+            }
+            29->{
+                /*Ejercicio 29: Crea una función que determine si una cadena de texto es un
+                anagrama de otra cadena. Dos palabras son anagramas si tienen las mismas letras,
+                pero en un orden diferente.*/
+                println("Escribe la palabra 1: ")
+                val palabra1 = readLine()
+                println("Escribe la palabra 2: ")
+                val palabra2 = readLine()
+                if(sonPalindromos(palabra1.toString(), palabra2.toString())) println("$palabra1 y $palabra2 son palindromos.")
+                else println("$palabra1 y $palabra2 no son palindromos.")
+                break
             }
             //cosas
             -1->{
@@ -513,3 +556,67 @@ fun buscaMayor(m:Array<IntArray>):Int{
     return mayor
 }
 //EJ25
+fun buscaMenor(m:Array<IntArray>):Int{
+    var menor=m[0][0]
+    for(i in 0..m.size-1){
+        for(j in 0..m[i].size-1){
+            if(menor>m[i][j])
+                menor=m[i][j]
+        }
+    }
+    return menor
+}
+//EJ26
+fun masLarga(l:List<String>):String{
+    var larga=l[0]
+    for(i in 0..l.size-1){
+        if(larga.length<l[i].length){
+            larga=l[i]
+        }
+    }
+    return larga
+}
+//EJ27
+fun masCorta(l:List<String>):String{
+    var corta=l[0]
+    for(i in 0..l.size-1){
+        if(corta.length>l[i].length){
+            corta=l[i]
+        }
+    }
+    return corta
+}
+//EJ28
+fun soloLetrasEspacios(texto:String):Boolean{
+    var devuelve=true
+    //var topes= arrayOf('a'.code,'z'.code,'A'.code,'Z'.code)
+    for(i in 0..texto.length-1){
+        if(texto[i].isDigit()){
+            devuelve = false
+            break
+        }
+    }
+    return devuelve
+}
+//EJ29
+fun sonPalindromos(p1:String, p2:String):Boolean{
+    var letras1=mutableListOf<Char>()
+    var letras2=mutableListOf<Char>()
+    var orden1=""
+    var orden2=""
+    if(p1.length!=p2.length){
+        return false
+    }else {
+        for (i in p1) letras1.add(i)
+        for (i in p2) letras2.add(i)
+        letras1.sort()
+        letras2.sort()
+        for(i in letras1) orden1+=i
+        for(i in letras2) orden2+=i
+        if(orden1!=orden2) return false
+        else return true
+    }
+
+
+
+}
