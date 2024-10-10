@@ -365,7 +365,7 @@ fun main(){
                 menor.
                 - No se pueden utilizar funciones propias del lenguaje que lo resuelvan
                 automáticamente.*/
-                var lista=listOf(2, 4, 69, 8, 9, 6)
+                var lista=mutableListOf(2, 4, 69, 8, 9, 6)
                 println("Lista original: $lista")
                 println("Lista ordenada de menor a mayor: ${ordenaLista(lista,"asc")}")
                 println("Lista ordenada de mayor a menor: ${ordenaLista(lista,"desc")}")
@@ -787,17 +787,31 @@ fun karakakas(texto:String, opc:Int):String{
     return karaka
 }
 //EJ35
-fun ordenaLista(l:List<Int>, opc:String):List<Int>{
-    var ordenada = mutableListOf<Int>()
-    var elemento = l[0]
-    //var aux = elemento
-    when (opc) {
-        "asc" -> {
-            //
+fun ordenaLista(l:MutableList<Int>, opc:String):List<Int>{
+    val tope=l.size
+    when (opc){
+        "asc" ->{
+            for (i in 0 until tope-1) {
+                for (j in 0 until tope-i-1) {
+                    if (l[j]>l[j+1]) {
+                        val aux=l[j]
+                        l[j]=l[j+1]
+                        l[j+1]=aux
+                    }
+                }
+            }
         }
-        "desc" -> {
-            //
+        "desc" ->{
+            for (i in 0 until tope-1) {
+                for (j in 0 until tope-i-1) {
+                    if (l[j]<l[j+1]) {
+                        val aux=l[j]
+                        l[j]=l[j+1]
+                        l[j+1]=aux
+                    }
+                }
+            }
         }
     }
-    return ordenada
+    return l
 }
