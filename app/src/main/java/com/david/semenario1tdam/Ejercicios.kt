@@ -299,6 +299,17 @@ fun main(){
                 else println("$palabra1 y $palabra2 no son palindromos.")
                 break
             }
+            30->{
+                /*Ejercicio 30: Crea una función que, dado un número entero, devuelva True si es un
+                número triangular (puede representarse como un triángulo equilátero de puntos), o
+                False en caso contrario.*/
+                println("Escribe un número: ")
+                val teclado30 = readLine()
+                var num = teclado30!!.toInt()
+                if(esTriangular(num)) println("El número $num es triangular.")
+                else println("El número $num no es triangular.")
+                break
+            }
             //cosas
             -1->{
                 println("Fin del programa")
@@ -616,7 +627,35 @@ fun sonPalindromos(p1:String, p2:String):Boolean{
         if(orden1!=orden2) return false
         else return true
     }
-
-
-
 }
+//EJ30
+fun esTriangular(n:Int):Boolean{
+    var suma=0
+    var i=1
+    var imprime=""
+    var devuelve=false
+    var tope=0
+    if (n<0) return devuelve
+    while (suma<n) {
+        suma+=i
+        if (suma==n) {
+            imprime="T<$i>="
+            devuelve=true
+            tope=i
+        }
+        i++
+    }
+    if (suma==n){
+        for(i in 1..tope){
+            imprime+="$i+"
+        }
+        imprime=imprime.dropLast(1)
+        imprime+=" = $n"
+        println(imprime)
+    }
+    return devuelve
+}
+
+//---------------------------------------------------------------------//
+//EXTRA
+//EJ31
