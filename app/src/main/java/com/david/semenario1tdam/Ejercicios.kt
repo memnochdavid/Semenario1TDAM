@@ -11,6 +11,7 @@ fun main(){
     var ejercicio = input!!.toInt()
     while(ejercicio!=-1){
         when(ejercicio){
+            //BASE
             1->{
                 /*Ejercicio 1. Crea una función que obtenga el número máximo de una
                 lista de números*/
@@ -370,13 +371,8 @@ fun main(){
                 println("Lista ordenada de menor a mayor: ${ordenaLista(lista,"asc")}")
                 println("Lista ordenada de mayor a menor: ${ordenaLista(lista,"desc")}")
                 break
-
-
-
-
-
             }
-            //cosas
+            //
             -1->{
                 println("Fin del programa")
                 break
