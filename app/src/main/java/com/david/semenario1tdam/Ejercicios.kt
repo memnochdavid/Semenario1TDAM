@@ -1,7 +1,8 @@
 package com.david.semenario1tdam
 
-import androidx.recyclerview.widget.SortedList
+import android.R.attr.text
 import kotlin.math.pow
+
 
 fun main(){
     println("SEMEN_ARIO 1 - TADAM")
@@ -309,6 +310,71 @@ fun main(){
                 if(esTriangular(num)) println("El número $num es triangular.")
                 else println("El número $num no es triangular.")
                 break
+            }
+            //---------------------------------------------------------------------//
+            //EXTRA
+            31->{
+                /*Ejercicio 31: Duplicar Elementos en una Lista
+                Escribe una función que tome una lista de números y utilice la función map para
+                duplicar cada número en la lista. La función debe devolver una nueva lista con
+                todos los números duplicados.
+                Por ejemplo, si la entrada es [1, 2, 3, 4], la función debe devolver [2, 4, 6, 8].*/
+                var listaOriginal=listOf(1,2,3,4)
+                println("Lista original: $listaOriginal")
+                var listaDupli=duplicaLista(listaOriginal)
+                println("Lista duplicada: $listaDupli")
+                break
+            }
+            32->{
+                /*Ejercicio 32: Crear un Diccionario a partir de Listas
+                Escribe una función que tome dos listas, una lista de claves y otra lista de valores, y
+                cree un diccionario utilizando mapOf para combinar las listas en un diccionario
+                clave-valor. La función debe devolver el diccionario resultante.*/
+                var claves=listOf(1,2,3,4,5,6,7)
+                var valores=listOf("lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo")
+                var diccionario=creaMapa(claves,valores).toMap()
+                println("Diccionario: $diccionario")
+                break
+            }
+            33->{
+                /*Ejercicio 33: Crea un programa se encargue de transformar un número decimal a
+                binario sin utilizar funciones propias del lenguaje que lo hagan directamente.*/
+                println("Escribe un número decimal:")
+                val teclado33 = readLine()
+                var num = teclado33!!.toInt()
+                var binario=toBinario(num)
+                println("El número $num en binario es: $binario")
+                break
+            }
+            34->{
+                /*Ejercicio 34: Crea una función que sea capaz de encriptar y desencriptar texto
+                utilizando el algoritmo de encriptación de Karaca (debes buscar información sobre
+                él).*/
+                println("Escribe un texto:")
+                val teclado34 = readLine()
+                var texto = teclado34!!
+                println("Texto original: $texto")
+                println("Texto encriptado: ${karakakas(texto,1)}")
+                println("Texto desencriptado: ${karakakas(karakakas(texto,1),2)}")
+                break
+            }
+            35->{
+                /*Ejercicio 35: Crea una función que ordene y retorne una matriz de números.
+                - La función recibirá un listado (por ejemplo [2, 4, 6, 8, 9]) y un parámetro adicional
+                - "Asc" o "Desc" para indicar si debe ordenarse de menor a mayor o de mayor a
+                menor.
+                - No se pueden utilizar funciones propias del lenguaje que lo resuelvan
+                automáticamente.*/
+                var lista=listOf(2, 4, 69, 8, 9, 6)
+                println("Lista original: $lista")
+                println("Lista ordenada de menor a mayor: ${ordenaLista(lista,"asc")}")
+                println("Lista ordenada de mayor a menor: ${ordenaLista(lista,"desc")}")
+                break
+
+
+
+
+
             }
             //cosas
             -1->{
@@ -659,3 +725,79 @@ fun esTriangular(n:Int):Boolean{
 //---------------------------------------------------------------------//
 //EXTRA
 //EJ31
+fun duplicaLista(l:List<Int>):List<Int>{
+    return l.map{it*2}
+}
+//EJ32
+fun creaMapa(l1:List<Int>, l2:List<String>):Map<Int,String>{
+    var mapa= mutableMapOf<Int,String>()
+    for(i in 0.. l1.size-1){
+        mapa.put(l1[i],l2[i])
+    }
+    return mapa
+}
+//EJ33
+fun toBinario(n:Int):String{
+    var devuelve=""
+    var valor=n
+    var i=0
+    while(valor>0){
+        if(i%4==0) devuelve+=" "
+        devuelve+=valor%2
+        valor/=2
+        i++
+    }
+    devuelve=devuelve.reversed()
+    return devuelve
+}
+//EJ34
+fun karakakas(texto:String, opc:Int):String{
+    var karaka=""
+    when(opc) {
+        1-> {
+            for (i in texto.reversed()) {
+                if (i == 'a' || i == 'e' || i == 'i' || i == 'o' || i == 'u') {
+                    when (i) {
+                        'a' -> karaka += '0'
+                        'e' -> karaka += '1'
+                        'i' -> karaka += '2'
+                        'o' -> karaka += '3'
+                        'u' -> karaka += '4'
+                    }
+                } else karaka += i
+            }
+        }
+        2->{
+            for (i in texto.reversed()) {
+                if (i == '0' || i == '1' || i == '2' || i == '3' || i == '4') {
+                    when (i) {
+                        '0' -> karaka += 'a'
+                        '1' -> karaka += 'e'
+                        '2' -> karaka += 'i'
+                        '3' -> karaka += 'o'
+                        '4' -> karaka += 'u'
+                    }
+                } else karaka += i
+            }
+
+        }
+        else-> throw Exception("Opción no válida")
+
+    }
+    return karaka
+}
+//EJ35
+fun ordenaLista(l:List<Int>, opc:String):List<Int>{
+    var ordenada = mutableListOf<Int>()
+    var elemento = l[0]
+    //var aux = elemento
+    when (opc) {
+        "asc" -> {
+            //
+        }
+        "desc" -> {
+            //
+        }
+    }
+    return ordenada
+}
