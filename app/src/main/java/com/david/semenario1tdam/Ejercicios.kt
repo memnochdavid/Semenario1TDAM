@@ -41,9 +41,9 @@ fun main(){
             4->{
                 /*Ejercicio 4. Crea una función que determine si una cadena de texto es un
                 palíndromo.*/
-                println("Escribe la distancia en millas:")
-                val teclado2 = readLine()
-                var palabra = teclado2!!
+                println("Escribe una palabra:")
+                val teclado4 = readLine()
+                var palabra = teclado4!!
                 if(esPalindromo(palabra)){
                     println("La palabra ${palabra} es un palíndromo")
                 }else{
